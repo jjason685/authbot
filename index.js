@@ -82,7 +82,7 @@ class AuthBot {
         const guild = this._bot.guilds.find(guild => guild.id === this.guildId);
         for (let i = 0; i < allUsers.length; i++) {
             let user = allUsers[i];
-            if (Date.now() > new Date(user.expiry).getTime()) {
+            if (Date.now() > Date.parse(user.expiry)) {
                 if (this.unverifiedRoleName !== null) {
                     let unverRole = guild.roles.find(role => role.name === this.unverifiedRoleName);
                     guild.member(user.id).addRole(unverRole);
